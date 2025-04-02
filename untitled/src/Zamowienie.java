@@ -18,8 +18,6 @@ public class Zamowienie {
         this.status = status;
     }
 
-    public Zamowienie(int id, Klient klient, ArrayList<Produkt> produkty, int[] ilosc) {
-    }
 
     public int getId(){
         return id;

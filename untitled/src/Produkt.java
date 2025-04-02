@@ -9,8 +9,8 @@ public class Produkt {
         this.id = id;
         this.nazwa = nazwa;
         this.kategoria = kategoria;
-        this.cena = cena;
-        this.iloscWMagazynie = iloscWMagazynie;
+        this.setCena(cena);
+        this.setIloscWMagazynie(iloscWMagazynice);
     }
     public int getId() {
         return id;
@@ -34,12 +34,18 @@ public class Produkt {
         return cena;
     }
     public void setCena(double cena) {
+        if(cena<0){
+            throw new IllegalArgumentException("Cena musi być większa bądź równa 0");
+        }
         this.cena = cena;
     }
     public int getIloscWMagazynie() {
         return iloscWMagazynie;
     }
     public void setIloscWMagazynie(int iloscWMagazynice) {
+        if(iloscWMagazynice<0){
+            throw new IllegalArgumentException("Ilośc w magazynie musi być większa bądź równa 0");
+        }
         this.iloscWMagazynie = iloscWMagazynice;
     }
     public void wyswietlInformacje() {

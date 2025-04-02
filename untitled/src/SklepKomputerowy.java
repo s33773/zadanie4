@@ -27,16 +27,20 @@ public class SklepKomputerowy {
         int[] ilosciZamowione = zamowienie.getIlosci();
         for (int i = 0; i < produktyZamowione.length; i++) {
             Produkt produkt = produktyZamowione[i];
-            int ilosc = ilosciZamowione[i];
-            int nowaIlosc = produkt.getIloscWMagazynie() - ilosc;
-            produkt.setIloscWMagazynie(nowaIlosc);
+            int iloscZamowiona = ilosciZamowione[i];
+           produkt.setIloscWMagazynie(produkt.getIloscWMagazynie()-iloscZamowiona);
         }
     }
     public void zmienStatusZamowienia(int idZamowienia, String nowyStatus){
-
+        for (Zamowienie zamowienie : zamowienia) {
+            if (zamowienie.getId() == idZamowienia) {
+                zamowienie.setStatus(nowyStatus);
+                System.out.println("Status zamówienia: " + nowyStatus);
+                return;
+            }
+        }
+        System.out.println("Zamówienie nie istnieje");
     }
-
-
     public void wyswietlProduktyWKategorii(String kategoria) {
         for (Produkt produkt : produkty) {
             if (produkt.getKategoria().equals(kategoria)) {
@@ -44,9 +48,18 @@ public class SklepKomputerowy {
             }
         }
     }
-    public void wyswietlZamowieniaKlienta(int idKlienta) {
-
+    public boolean wyswietlZamowieniaKlienta(int idKlienta) {
+        for (Zamowienie zamowienie : zamowienia) {
+            if (zamowienie.getKlient().getId() == idKlienta) {
+                zamowienie.wyswietlSzczegoly();
+                return true;
+            }
+        }
+        return false;
+    }
 
     }
 
-}
+
+
+
