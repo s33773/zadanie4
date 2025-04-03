@@ -23,7 +23,7 @@ public class SklepKomputerowy {
     }
 
     public void aktualizujStanMagazynowy(Zamowienie zamowienie) {
-        Produkt[] produktyZamowione = zamowienie.getProdukty();  // Pobieramy produkty z zamówienia
+        Produkt[] produktyZamowione = zamowienie.getProdukty();  
         int[] ilosciZamowione = zamowienie.getIlosci();
         for (int i = 0; i < produktyZamowione.length; i++) {
             Produkt produkt = produktyZamowione[i];
